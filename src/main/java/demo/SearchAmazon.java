@@ -47,7 +47,7 @@ public class SearchAmazon {
         searchButton.click();
         //validate the search result Using Locator "XPath" //h3[text()='Amazon.in'] | .isDisplayed()
         WebElement amazonLink = driver.findElement(By.xpath("//h3[text()='Amazon.in']"));
-        System.out.println("The link is displayed" + amazonLink.isDisplayed());
+        System.out.println("The link is displayed" + " " + amazonLink.isDisplayed());
         System.out.println("end Test case: testCase02");
     }
 
