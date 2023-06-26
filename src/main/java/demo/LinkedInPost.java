@@ -43,7 +43,7 @@ public class LinkedInPost {
         driver.findElement(By.xpath("//*[contains(text(), 'Sign in')]")).click();
         // Locate Username field Using Locator "ID" "username" and write user name
         WebElement userName = driver.findElement(By.id("username"));
-        userName.sendKeys("irfanahmed7240@gmail.com");
+        userName.sendKeys("irfankhan.striker@gmail.com");
         // Locate Password field Using Locator "ID" "password" | .sendKeys("Test")
         WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("Irfan@7240");

@@ -9,10 +9,11 @@ public class App {
     public void getGreeting() throws InterruptedException, MalformedURLException {
        // TestCases tests = new TestCases(); // Initialize your test class
 
-       // SearchAmazon tests = new SearchAmazon();
-
+       
+        // SearchAmazon tests = new SearchAmazon();
         //BookMyShow tests = new BookMyShow();
-        LinkedInPost tests = new LinkedInPost();
+        //LinkedInPost tests = new LinkedInPost();
+        ImageURL tests = new ImageURL();
 
         //TODO: call your test case functions one after other here
 
