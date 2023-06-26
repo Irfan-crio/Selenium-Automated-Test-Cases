@@ -11,7 +11,8 @@ public class App {
 
        // SearchAmazon tests = new SearchAmazon();
 
-        BookMyShow tests = new BookMyShow();
+        //BookMyShow tests = new BookMyShow();
+        LinkedInPost tests = new LinkedInPost();
 
         //TODO: call your test case functions one after other here
 
