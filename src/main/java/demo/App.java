@@ -7,7 +7,9 @@ import java.net.MalformedURLException;
 
 public class App {
     public void getGreeting() throws InterruptedException, MalformedURLException {
-        TestCases tests = new TestCases(); // Initialize your test class
+       // TestCases tests = new TestCases(); // Initialize your test class
+
+        SearchAmazon tests = new SearchAmazon();
 
         //TODO: call your test case functions one after other here
 
