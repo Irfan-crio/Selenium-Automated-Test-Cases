@@ -1,12 +1,18 @@
 package demo;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 //Selenium Imports
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -36,26 +42,59 @@ public class WindowHandle {
     }
 
     
-    public  void testCase01() throws InterruptedException{
+    public  void testCase01(){
         System.out.println("Start Test case: testCase01");
-        driver.get("https://the-internet.herokuapp.com/nested_frames");
-        Thread.sleep(5000);
-        driver.switchTo().frame("frame-top");
-        driver.switchTo().frame("frame-left");
-        WebElement leftString = driver.findElement(By.xpath("//body"));
-        System.out.println(leftString.getText());
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame("frame-middle");
-        WebElement middleString = driver.findElement(By.xpath("//div[@id='content']"));
-        System.out.println(middleString.getText());
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame("frame-right");
-        WebElement rightString = driver.findElement(By.xpath("//body"));
-        System.out.println(rightString.getText());
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame("frame-bottom");
-        WebElement bottomString = driver.findElement(By.xpath("//body"));
-        System.out.println(bottomString.getText());
+        // Navigate to the page with the "Try it" button
+        driver.get("https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_open");
+
+        // Switch to the iframe containing the "Try it" button
+        driver.switchTo().frame("iframeResult");
+
+        // Click on the "Try it" button
+        WebElement tryItButton = driver.findElement(By.tagName("button"));
+        tryItButton.click();
+
+        // Get the window handle of the original window
+        String originalWindowHandle = driver.getWindowHandle();
+
+        // Get all the window handles
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        // Switch to the new window
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(originalWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        // Get the URL of the new window
+        String newWindowUrl = driver.getCurrentUrl();
+
+        // Get the title of the new window
+        String newWindowTitle = driver.getTitle();
+
+        // Take a screenshot of the new window
+        // Replace "path/to/screenshot.png" with the desired path and filename for the screenshot
+        driver.manage().window().maximize();
+        driver.manage().window().fullscreen();
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenshot, new File("path/to/screenshot.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Close the new window
+        driver.close();
+
+        // Switch back to the original window
+        driver.switchTo().window(originalWindowHandle);
+
+        // Print the URL, Title, and screenshot path
+        System.out.println("URL of the new window: " + newWindowUrl);
+        System.out.println("Title of the new window: " + newWindowTitle);
+        System.out.println("Screenshot path: path/to/screenshot.png");
         System.out.println("end Test case: testCase02");
     }
 

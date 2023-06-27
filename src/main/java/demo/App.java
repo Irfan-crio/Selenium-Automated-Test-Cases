@@ -14,8 +14,9 @@ public class App {
         //BookMyShow tests = new BookMyShow();
         //LinkedInPost tests = new LinkedInPost();
         //ImageURL tests = new ImageURL();
-        //WindowHandle tests = new WindowHandle();
-        IMDBratings tests = new IMDBratings();
+        //WindowFrames tests = new WindowFrames();
+        //IMDBratings tests = new IMDBratings();
+        WindowHandle tests = new WindowHandle();
 
         //TODO: call your test case functions one after other here
 
