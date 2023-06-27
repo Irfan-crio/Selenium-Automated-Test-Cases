@@ -13,7 +13,8 @@ public class App {
         // SearchAmazon tests = new SearchAmazon();
         //BookMyShow tests = new BookMyShow();
         //LinkedInPost tests = new LinkedInPost();
-        ImageURL tests = new ImageURL();
+        //ImageURL tests = new ImageURL();
+        WindowHandle tests = new WindowHandle();
 
         //TODO: call your test case functions one after other here
 
